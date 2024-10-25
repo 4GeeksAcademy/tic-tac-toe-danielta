@@ -10,3 +10,67 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.mainPage {
+    background-color: #585d63;
+    height: 100rem;
+    padding-top: 3rem;
+    text-align: center;
+    font-weight:600;
+    font-size: 40px;
+    color: white;
+}
+.pickWeapon {
+    padding-top: 1rem;
+    padding-bottom: 7rem;
+}
+.selectorBox {
+    margin: auto;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    background-color: black;
+    width: 50rem;
+    display:block;
+}
+.chooseWeapon {
+    padding-bottom: 2rem;
+}
+.nameBox {
+    display: flex;
+    justify-content: center;
+}
+#player1 {
+    width:12rem;
+    height:2rem;
+    margin-right:10px;
+    font-size: medium;
+}
+#player2 {
+    width:12rem;
+    height: 2rem;
+    margin-left:10px;
+    font-size: medium;
+}
+#clickXo {
+    display: flex;
+    justify-content: center;
+}
+#X {
+    background-color: rgb(170, 170, 239);
+    color: blue;
+    width: 125px;
+    height: 125px;
+    font-size: 100px;
+    text-align: center;
+    margin-right:20px;
+    margin-top: 10px;
+}
+#O {
+    background-color: rgb(233, 132, 123);
+    color: red;
+    width: 125px;
+    height: 125px;
+    font-size: 100px;
+    justify-content: center;
+    margin-left:20px;
+    margin-top:10px;
+}
