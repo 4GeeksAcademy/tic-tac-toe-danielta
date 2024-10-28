@@ -74,3 +74,31 @@
     margin-left:20px;
     margin-top:10px;
 }
+#gameBox {
+    width: 50vw;
+    margin: auto;  
+    background: black;
+    padding-bottom: 2vw;
+}
+#turnIndicator {
+    padding-top: 1rem;
+}
+#restart {
+    margin-top: 2rem;
+    height: 30px;
+    width: 100px;
+    font-size:medium;
+    border-radius: 5px;
+    border-color: blue;
+}
+#game {
+    margin: auto;
+    width: 25vw;
+    padding-top: 3rem;
+}
+.row {
+    height: 135px;
+}
+.col-4 {
+    font-size:80px;
+}
