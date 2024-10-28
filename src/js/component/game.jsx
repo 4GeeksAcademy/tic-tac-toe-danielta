@@ -7,16 +7,54 @@ const Game = () => {
     const [boxValues, setBoxValues] = useState(["", "", "", "", "", "", "", "", ""]);
     const [currPlayer, setCurrPlayer] = useState("X");
 
-    const nextMove = (index) => {
-        let newValues = [...boxValues];
-        newValues[index] = currPlayer;
-        setBoxValues(newValues);
-        setCurrPlayer(currPlayer == "X" ? "O" : "X")
-    }
 
     const reset = () => {
         setBoxValues(["", "", "", "", "", "", "", "", ""])
     }
+
+    let winningCombos = [
+        [1,1,1,0,0,0,0,0,0],
+        [0,0,0,1,1,1,0,0,0],
+        [0,0,0,0,0,0,1,1,1],
+        [1,0,0,1,0,0,1,0,0],
+        [0,1,0,0,1,0,0,1,0],
+        [0,0,1,0,0,1,0,0,1],
+        [1,0,0,0,1,0,0,0,1],
+        [0,0,1,0,1,0,1,0,0]
+    ]
+
+    const winCheck = (newValues) => {
+        let winner = null;
+        winningCombos.forEach((combo) => {
+            var match = 0;
+            combo.forEach((element, index) => {
+                if (element == 1) {
+                    if (newValues[index] == currPlayer) {
+                        match += 1;
+                        if (match == 3) {
+                            winner = currPlayer;
+                        }
+                    }
+                }
+            })
+            console.log(match)
+        })
+        return winner;
+    }
+
+    const nextMove = (index) => {
+        if (boxValues[index] == ""){ 
+            let newValues = [...boxValues];
+            newValues[index] = currPlayer;
+            setBoxValues(newValues);
+            if (winCheck() == currPlayer) {
+                console.log(currPlayer + "has won!")
+            } else {
+            setCurrPlayer(currPlayer == "X" ? "O" : "X")
+            }
+        }
+    }
+
 
     return (
         <div id="gameBox">
