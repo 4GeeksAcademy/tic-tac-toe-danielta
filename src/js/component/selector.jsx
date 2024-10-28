@@ -1,6 +1,7 @@
 import React from "react";
+import Game from "./game";
 
-const Selector = () => {
+const Selector = ({setCurrPlayer}) => {
     return (
         <div className="screen1">
             <div className="pickWeapon">Pick A Weapon</div>
@@ -11,8 +12,8 @@ const Selector = () => {
                     <input id="player2" placeholder="Player 2 Name"></input>
                 </div>
                 <div id="clickXo">
-                    <h3 id="X">X</h3>
-                    <h3 id="O">O</h3>
+                    <h3 id="X" onClick={() => setCurrPlayer("X")}>X</h3>
+                    <h3 id="O" onClick={() => setCurrPlayer("O")}>O</h3>
                 </div>
             </div>
         </div>

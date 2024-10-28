@@ -1,15 +1,15 @@
 import React from "react";
 import { useState } from "react";
+import Selector from "./selector";
 
 
-
-const Game = () => {
+const Game = ({winner, setWinner, currPlayer, setCurrPlayer}) => {
     const [boxValues, setBoxValues] = useState(["", "", "", "", "", "", "", "", ""]);
-    const [currPlayer, setCurrPlayer] = useState("X");
-
+    
 
     const reset = () => {
         setBoxValues(["", "", "", "", "", "", "", "", ""])
+        setWinner("")
     }
 
     let winningCombos = [
@@ -33,6 +33,7 @@ const Game = () => {
                         match += 1;
                         if (match == 3) {
                             winner = currPlayer;
+                            setWinner(winner);
                         }
                     }
                 }
@@ -47,20 +48,19 @@ const Game = () => {
             let newValues = [...boxValues];
             newValues[index] = currPlayer;
             setBoxValues(newValues);
-            if (winCheck() == currPlayer) {
-                console.log(currPlayer + "has won!")
+            if (winCheck(newValues) == currPlayer) {
+                console.log(currPlayer + " has won!")
             } else {
             setCurrPlayer(currPlayer == "X" ? "O" : "X")
             }
         }
     }
 
-
     return (
         <div id="gameBox">
-            <div id= "turnIndicator" style={{color: currPlayer == "X" ? "blue" : "red"}}>It is {currPlayer} turn</div>
+            <div id= "turnIndicator" style={{color: currPlayer == "X" ? "blue" : "red"}}>{winner== "" ? `It is ${currPlayer}'s turn`: `${currPlayer} has WON!`}</div>
             <button onClick= {() => reset()} id="restart">Start over</button>
-            <div id="game">
+            <div id="game" className={winner == "" ? "none" : "hideGame"}>
                 <div id="row1" className="row">
                     <div onClick={() => nextMove(0)} className="col-4" style={{borderBottom: "1px solid white", color: boxValues[0] == "X" ? "blue" : "red" }}>{boxValues[0]}</div>
                     <div onClick={() => nextMove(1)} className="col-4" style={{borderBottom: "1px solid white", color: boxValues[1] == "X" ? "blue" : "red", borderLeft: "1px solid white", borderRight: "1px solid white"}}>{boxValues[1]}</div>
